@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "179179400932",
+    "project_id": "globusnilomar",
+    "storage_bucket": "globusnilomar.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:179179400932:android:0114844929684c6a2086f1",
+        "android_client_info": {
+          "package_name": "com.example.globusnilomar"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCeFlEIlLk86f4URiHNl64MAe-RYvW-hNc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
