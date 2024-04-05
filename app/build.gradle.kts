@@ -53,4 +53,23 @@ dependencies {
     implementation(platform("com.google.firebase:firebase-bom:32.7.2"))
     implementation("com.google.firebase:firebase-analytics")
     implementation("com.github.bumptech.glide:glide:4.16.0")
+    // Import the Firebase BoM
+    implementation(platform("com.google.firebase:firebase-bom:32.3.1"))
+    implementation("com.google.firebase:firebase-database-ktx")
+
+    // When using the BoM, you don't specify versions in Firebase library dependencies
+
+    // Add the dependency for the Firebase SDK for Google Analytics
+    implementation("com.google.firebase:firebase-analytics-ktx")
+
+    // TODO: Add the dependencies for any other Firebase products you want to use
+    // See https://firebase.google.com/docs/android/setup#available-libraries
+    // For example, add the dependencies for Firebase Authentication and Cloud Firestore
+    implementation("com.google.firebase:firebase-auth-ktx")
+    implementation("com.google.firebase:firebase-firestore-ktx")
+    implementation("com.google.firebase:firebase-database-ktx:20.0.5")
+    implementation("com.squareup.picasso:picasso:2.71828")
+    implementation(platform("com.google.firebase:firebase-bom:32.7.4"))
+    implementation("com.google.firebase:firebase-storage")
+
 }

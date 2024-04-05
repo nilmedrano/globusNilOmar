@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/blueberry"
+    android:scrollbarThumbHorizontal="@color/white"
+    tools:context=".RegisterActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="30dp">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="140dp"
+            android:layout_height="140dp"
+            app:cardBackgroundColor="@color/blueberry"
+            app:cardCornerRadius="90dp"
+            android:layout_marginBottom="15dp"
+            >
+
+            <!-- IMATGE -->
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/jugador"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="0dp"
+                android:src="@drawable/fperfil" />
+
+        </androidx.cardview.widget.CardView>
+
+
+
+        <!-- ENTREM EL MAIL -->
+        <Button
+            android:id="@+id/EditarFoto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="25dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="30dp"
+            android:background="@drawable/button_menu"
+            android:backgroundTintMode="add"
+            android:drawableTintMode="add"
+            android:text="@string/BTMEDITAR"
+            android:textColor="@color/blueberry"
+            android:textSize="12sp"
+            app:rippleColor="#FF0000" />
+
+        <EditText
+            android:id="@+id/correoEt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/prompt_email"
+            android:inputType="textEmailAddress"
+            android:scrollbarThumbHorizontal="@drawable/button_menu"
+            android:scrollbarThumbVertical="@drawable/button_menu"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
+            android:backgroundTint="#FFFFFF"
+            app:layout_constraintBottom_toBottomOf='parent'
+            app:layout_constraintEnd_toEndOf='parent'
+            app:layout_constraintStart_toStartOf='parent'
+            app:layout_constraintTop_toTopOf='parent'
+
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"/>
+        <!-- forcem que la entrada sigui un correu electronic -->
+
+        <!-- ENTREM EL PASSWORD -->
+        <EditText
+            android:id="@+id/passEt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/prompt_password"
+            android:inputType="textPassword"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
+            android:backgroundTint="#FFFFFF"
+            app:layout_constraintBottom_toBottomOf='parent'
+            app:layout_constraintEnd_toEndOf='parent'
+            app:layout_constraintStart_toStartOf='parent'
+            app:layout_constraintTop_toTopOf='parent'
+
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"/>
+        <!-- forcem que la entrada sigui un password -->
+
+
+        <!-- ENTREM EL NOM DEL JUGADOR -->
+        <EditText
+            android:id="@+id/nombreEt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/prompt_username"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
+            android:backgroundTint="#FFFFFF"
+            app:layout_constraintBottom_toBottomOf='parent'
+            app:layout_constraintEnd_toEndOf='parent'
+            app:layout_constraintStart_toStartOf='parent'
+            app:layout_constraintTop_toTopOf='parent'
+
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"/>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <!-- Campo de edad -->
+            <EditText
+                android:id="@+id/edatEt"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="@string/edatEt"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#FFFFFF"
+                android:backgroundTint="#FFFFFF"
+                app:layout_constraintBottom_toBottomOf='parent'
+                app:layout_constraintEnd_toEndOf='parent'
+                app:layout_constraintStart_toStartOf='parent'
+                app:layout_constraintTop_toTopOf='parent'
+
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"/>
+
+            <!-- Campo de ubicación -->
+            <EditText
+                android:id="@+id/poblacioEt"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="@string/poblacioEt"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#FFFFFF"
+                android:backgroundTint="#FFFFFF"
+                app:layout_constraintBottom_toBottomOf='parent'
+                app:layout_constraintEnd_toEndOf='parent'
+                app:layout_constraintStart_toStartOf='parent'
+                app:layout_constraintTop_toTopOf='parent'
+
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"/>
+        </LinearLayout>
+
+
+        <!-- DATA ACTUAL -->
+        <TextView
+            android:id="@+id/fechaEt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:hint="@string/prompt_date"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
+            android:textSize="20sp" />
+
+        <!-- BOTO DE ENTRAR -->
+        <Button
+            android:id="@+id/Registrar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/button_menu"
+            android:backgroundTintMode="add"
+            android:drawableTintMode="add"
+            android:text="@string/BTMREGISTRO"
+            android:textColor="@color/blueberry"
+            app:rippleColor="#FF0000" />
+
+
+    </LinearLayout>
+</RelativeLayout>
