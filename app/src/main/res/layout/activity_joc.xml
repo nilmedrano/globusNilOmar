@@ -1,29 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<TableLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:gravity="center_vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bluesoft"
-    android:gravity="center_vertical"
-    tools:context="JocActivity">
+    tools:context=".JocActivity">
 
 
     <TableRow
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center">
+        android:gravity="center" >
 
         <Button
             android:id="@+id/PVP"
             android:layout_width="35dp"
             android:layout_height="60dp"
             android:alpha="0.9"
-            android:backgroundTint="@color/blueberry"
+            android:onClick="PlayerChoose"
             android:text="Player v/s Player"
             android:textAllCaps="false"
-            android:textColor="@color/bluesoft"
-            android:onClick="playerChoose" />
+            android:textSize="16sp" />
 
         <Button
             android:id="@+id/PVC"
@@ -31,26 +30,23 @@
             android:layout_height="60dp"
             android:layout_margin="7sp"
             android:alpha="0.9"
-            android:backgroundTint="@color/bluesoft"
+            android:onClick="PlayerChoose"
             android:text="Player v/s CPU"
             android:textAllCaps="false"
-            android:textColor="@color/blueberry"
-            android:onClick="playerChoose" />
+            android:textSize="16sp" />
     </TableRow>
 
     <TableRow
+        android:gravity="center"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center">
+        android:layout_height="match_parent">
 
         <Button
             android:id="@+id/button1"
             android:layout_width="50pt"
             android:layout_height="50pt"
             android:layout_margin="2dp"
-            android:backgroundTint="#E4DCDC"
             android:onClick="buttonClick"
-            android:textColor="@color/bluesoft"
             android:textSize="40sp"
             tools:ignore="ButtonStyle" />
 
@@ -59,9 +55,7 @@
             android:layout_width="50pt"
             android:layout_height="50pt"
             android:layout_margin="2dp"
-            android:backgroundTint="#E4DCDC"
             android:onClick="buttonClick"
-            android:textColor="@color/bluesoft"
             android:textSize="40sp"
             tools:ignore="ButtonStyle" />
 
@@ -70,26 +64,22 @@
             android:layout_width="50pt"
             android:layout_height="50pt"
             android:layout_margin="2dp"
-            android:backgroundTint="#E4DCDC"
             android:onClick="buttonClick"
-            android:textColor="@color/bluesoft"
             android:textSize="40sp"
             tools:ignore="ButtonStyle" />
     </TableRow>
 
     <TableRow
+        android:gravity="center"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center">
+        android:layout_height="match_parent" >
 
         <Button
             android:id="@+id/button4"
             android:layout_width="50pt"
             android:layout_height="50pt"
             android:layout_margin="2dp"
-            android:backgroundTint="#E4DCDC"
             android:onClick="buttonClick"
-            android:textColor="@color/bluesoft"
             android:textSize="40sp"
             tools:ignore="ButtonStyle" />
 
@@ -98,9 +88,7 @@
             android:layout_width="50pt"
             android:layout_height="50pt"
             android:layout_margin="2dp"
-            android:backgroundTint="#E4DCDC"
             android:onClick="buttonClick"
-            android:textColor="@color/bluesoft"
             android:textSize="40sp"
             tools:ignore="ButtonStyle" />
 
@@ -109,9 +97,7 @@
             android:layout_width="50pt"
             android:layout_height="50pt"
             android:layout_margin="2dp"
-            android:backgroundTint="#E4DCDC"
             android:onClick="buttonClick"
-            android:textColor="@color/bluesoft"
             android:textSize="40sp"
             tools:ignore="ButtonStyle" />
     </TableRow>
@@ -126,9 +112,7 @@
             android:layout_width="50pt"
             android:layout_height="50pt"
             android:layout_margin="2dp"
-            android:backgroundTint="#E4DCDC"
             android:onClick="buttonClick"
-            android:textColor="@color/bluesoft"
             android:textSize="40sp"
             tools:ignore="ButtonStyle" />
 
@@ -137,9 +121,7 @@
             android:layout_width="50pt"
             android:layout_height="50pt"
             android:layout_margin="2dp"
-            android:backgroundTint="#E4DCDC"
             android:onClick="buttonClick"
-            android:textColor="@color/bluesoft"
             android:textSize="40sp"
             tools:ignore="ButtonStyle" />
 
@@ -148,9 +130,7 @@
             android:layout_width="50pt"
             android:layout_height="50pt"
             android:layout_margin="2dp"
-            android:backgroundTint="#E4DCDC"
             android:onClick="buttonClick"
-            android:textColor="@color/bluesoft"
             android:textSize="40sp"
             tools:ignore="ButtonStyle" />
 
@@ -165,12 +145,29 @@
             android:id="@+id/bRestart"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/blueberry"
             android:onClick="restartGame"
-            android:text="Restart"
-            android:textAlignment="center"
+            android:text="@string/restart"
             android:textColor="#FFFFFF"
+            android:textAlignment="center"
             android:textSize="18sp"
+            android:backgroundTint="@color/blueberry"
+            android:padding="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:layout_gravity="center"
             tools:ignore="ButtonStyle" />
     </TableRow>
+    <Button
+        android:id="@+id/buttonJoc"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="40dp"
+        android:background="@drawable/button_login"
+        android:text="@string/MenuTxt"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 </TableLayout>

@@ -3,13 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bluesoft"
-    android:padding="30dp"
-    tools:context=".ScoreActivity">
+    tools:context=".InstitutCastelletFragment">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/RecyclerOne"
+    <pl.droidsonroids.gif.GifImageView
+        android:id="@+id/imageView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:listitem="@layout/item_jugador" />
+        android:layout_height="match_parent"
+        android:src="@drawable/logo_inscastellet"
+        android:scaleType="centerCrop"/>
+
 </FrameLayout>

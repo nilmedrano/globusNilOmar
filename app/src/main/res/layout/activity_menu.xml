@@ -40,27 +40,19 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="centerCrop"
-                android:src="@drawable/imatgemenu" />
+                android:src="@drawable/imatgemenu"
+                android:onClick="changeImg"/>
 
         </androidx.cardview.widget.CardView>
-
-        <LinearLayout
+        <TextView
+            android:id="@+id/uid"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:textAlignment="textStart">
+            android:text="0"
+            android:textAlignment="center"
+            android:textStyle="italic"
+            android:layout_marginBottom="10dp"/>
 
-            <TextView
-                android:id="@+id/uid"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="@string/uid"
-                android:textColor="#7C7C7C"
-                android:textStyle="italic"
-                android:layout_marginBottom="10sp"
-                />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -91,7 +83,8 @@
                                 android:layout_height="wrap_content"
                                 android:text="@string/correo"
                                 android:maxLines="1"
-                                android:ellipsize="end" />
+                                android:ellipsize="end"
+                                android:enabled="false" /> <!-- Bloquear edición -->
                         </com.google.android.material.textfield.TextInputLayout>
 
                         <!-- Campo de nombre -->
@@ -108,12 +101,11 @@
                                 android:layout_height="wrap_content"
                                 android:text="@string/nom"
                                 android:maxLines="1"
-                                android:ellipsize="end" />
+                                android:ellipsize="end"
+                                android:enabled="false" /> <!-- Bloquear edición -->
                         </com.google.android.material.textfield.TextInputLayout>
                     </LinearLayout>
                 </LinearLayout>
-
-
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -132,7 +124,9 @@
                             android:id="@+id/edat"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="@string/edat" />
+                            android:text="@string/edat"
+                            android:textColorHint="@android:color/black"
+                            android:enabled="false" /> <!-- Bloquear edición -->
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <!-- Campo de población -->
@@ -147,15 +141,12 @@
                             android:id="@+id/poblacio"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="@string/poblacio" />
+                            android:text="@string/poblacio"
+                            android:enabled="false" /> <!-- Bloquear edición -->
                     </com.google.android.material.textfield.TextInputLayout>
                 </LinearLayout>
-
-
             </LinearLayout>
 
-
-        </LinearLayout>
 
         <Button
             android:id="@+id/jugarBtn"
@@ -172,7 +163,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:background="@drawable/button_login"
-            android:text="@string/editarBtn"
+            android:text="@string/CANVICONTRASENYA"
             android:textColor="@color/bluesoft" />
 
         <Button
@@ -199,8 +190,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:background="@drawable/button_login"
+            android:background="@drawable/button_logout"
             android:text="@string/TancarSessio"
-            android:textColor="@color/bluesoft" />
+            android:textColor="@color/blueberry"
+            android:textStyle="bold" />
     </LinearLayout>
 </RelativeLayout>

@@ -1,39 +1,86 @@
-import android.graphics.Color
+package com.example.globusnilomar
+
+import android.content.Context
+import android.content.Intent
+import android.content.SharedPreferences
+import android.media.SoundPool
 import android.os.Bundle
-import android.os.Handler
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import com.example.globusnilomar.R
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import java.util.*
+
+lateinit var button1: Button
+lateinit var button2: Button
+lateinit var button3: Button
+lateinit var button4: Button
+lateinit var button5: Button
+lateinit var button6: Button
+lateinit var button7: Button
+lateinit var button8: Button
+lateinit var button9: Button
+lateinit var PVP: Button
+lateinit var PVC: Button
+lateinit var menuBtn: Button
+
+var user: FirebaseUser? = null;
+var PVPChoose: Boolean = true
 
 class JocActivity : AppCompatActivity() {
 
-    lateinit var buttonArray: Array<Button>
-    lateinit var PVP: Button
-    lateinit var PVC: Button
+    var partidaEnCurso = false
+    var Player1 = ArrayList<Int>()
+    var Player2 = ArrayList<Int>()
+    var ActivePlayer = 1
+    var setPlayer = 1
+    var primerMovimientoHecho = false
 
-    private var player1 = ArrayList<Int>()
-    private var player2 = ArrayList<Int>()
-    private var activePlayer = 1
-    private var setPlayer = 1
-    private var gameActive = true
+    // Nombre de las preferencias compartidas
+    private val PREFS_NAME = "com.example.globusnilomar"
+    private val PREF_PVP_CHOICE = "pvp_choice"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_joc)
 
-        buttonArray = arrayOf(
-            findViewById(R.id.button1), findViewById(R.id.button2), findViewById(R.id.button3),
-            findViewById(R.id.button4), findViewById(R.id.button5), findViewById(R.id.button6),
-            findViewById(R.id.button7), findViewById(R.id.button8), findViewById(R.id.button9)
-        )
+        // Inicializar preferencias compartidas
+        val prefs = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+        PVPChoose = prefs.getBoolean(PREF_PVP_CHOICE, true)
+
+        button1 = findViewById(R.id.button1)
+        button2 = findViewById(R.id.button2)
+        button3 = findViewById(R.id.button3)
+        button4 = findViewById(R.id.button4)
+        button5 = findViewById(R.id.button5)
+        button6 = findViewById(R.id.button6)
+        button7 = findViewById(R.id.button7)
+        button8 = findViewById(R.id.button8)
+        button9 = findViewById(R.id.button9)
         PVP = findViewById(R.id.PVP)
         PVC = findViewById(R.id.PVC)
-        setButtonActive(PVP)
-        setButtonInactive(PVC)
+
+        if (PVPChoose) {
+            setButtonActive(PVP)
+            setButtonInactive(PVC)
+        } else {
+            setButtonActive(PVC)
+            setButtonInactive(PVP)
+        }
+
+        menuBtn = findViewById<Button>(R.id.buttonJoc)
+        menuBtn.setOnClickListener {
+            val intent = Intent(this, MenuActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun setButtonActive(button: Button) {
@@ -47,24 +94,34 @@ class JocActivity : AppCompatActivity() {
     }
 
     fun restartGame(view: View) {
-        player1.clear()
-        player2.clear()
-        activePlayer = 1
-        gameActive = true
+        // Habilitar los botones de selección de modo
+        PVP.isEnabled = true
+        PVC.isEnabled = true
 
-        buttonArray.forEach { button ->
-            button.text = ""
-            button.setBackgroundColor(Color.TRANSPARENT)
-            button.isEnabled = true
-        }
+        partidaEnCurso = false
+        primerMovimientoHecho = false
+
+        // Guardar la elección del modo de juego en las preferencias compartidas
+        val prefs = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+        val editor = prefs.edit()
+        editor.putBoolean(PREF_PVP_CHOICE, PVPChoose)
+        editor.apply()
+
+        val intent = intent
+        finish()
+        startActivity(intent)
     }
 
     fun buttonClick(view: View) {
-        if (!gameActive) return
-
-        val buttonClicked = view as Button
+        if (!primerMovimientoHecho) {
+            // Bloquear los botones de selección de modo
+            PVP.isEnabled = false
+            PVC.isEnabled = false
+            primerMovimientoHecho = true
+        }
+        val buSelected: Button = view as Button
         var cellId = 0
-        when (buttonClicked.id) {
+        when (buSelected.id) {
             R.id.button1 -> cellId = 1
             R.id.button2 -> cellId = 2
             R.id.button3 -> cellId = 3
@@ -75,97 +132,229 @@ class JocActivity : AppCompatActivity() {
             R.id.button8 -> cellId = 8
             R.id.button9 -> cellId = 9
         }
-        playGame(cellId, buttonClicked)
+        PlayGame(cellId, buSelected)
     }
 
-    fun playerChoose(view: View) {
-        val ps = view as Button
+    fun PlayerChoose(view: View) {
+        val ps: Button = view as Button
         when (ps.id) {
             R.id.PVP -> {
                 setPlayer = 1
+                setButtonActive(PVP)
+                setButtonInactive(PVC)
+                PVPChoose = true
             }
             R.id.PVC -> {
                 setPlayer = 2
-                Handler().postDelayed({
-                    autoPlay()
-                }, 1000) // Espera de 1 segundo antes de que la CPU realice su movimiento
+                setButtonActive(PVC)
+                setButtonInactive(PVP)
+                PVPChoose = false
             }
         }
     }
 
-    private fun playGame(cellId: Int, buttonClicked: Button) {
-        if (!gameActive) return
-
-        if (activePlayer == 1) {
-            buttonClicked.text = "X"
-            buttonClicked.setBackgroundColor(Color.GREEN)
-            player1.add(cellId)
-            activePlayer = 2
+    fun PlayGame(cellId: Int, buSelected: Button) {
+        if (ActivePlayer == 1) {
+            buSelected.text = "X"
+            buSelected.setTextColor(ContextCompat.getColor(this, R.color.bluesoft))
+            buSelected.setBackgroundColor(ContextCompat.getColor(this, R.color.blueberry))
+            Player1.add(cellId)
+            ActivePlayer = 2
+            if (setPlayer == 1) {
+            } else {
+                try {
+                    AutoPlay()
+                } catch (ex: Exception) {
+                    Toast.makeText(this, "Game Over", Toast.LENGTH_SHORT).show()
+                }
+            }
         } else {
-            buttonClicked.text = "O"
-            buttonClicked.setBackgroundColor(Color.CYAN)
-            player2.add(cellId)
-            activePlayer = 1
+            buSelected.text = "O"
+            buSelected.setTextColor(ContextCompat.getColor(this, R.color.blueberry))
+            buSelected.setBackgroundColor(ContextCompat.getColor(this, R.color.bluesoft))
+            Player2.add(cellId)
+            ActivePlayer = 1
         }
-        buttonClicked.isEnabled = false
-        checkWinner()
+        buSelected.isEnabled = false
+        CheckWinner()
     }
 
-    private fun checkWinner() {
-        val winningConditions = arrayOf(
-            intArrayOf(1, 2, 3), intArrayOf(4, 5, 6), intArrayOf(7, 8, 9),
-            intArrayOf(1, 4, 7), intArrayOf(2, 5, 8), intArrayOf(3, 6, 9),
-            intArrayOf(1, 5, 9), intArrayOf(3, 5, 7)
-        )
+    fun CheckWinner() {
+        var winner = -1
 
-        for (condition in winningConditions) {
-            val conditionList = condition.toList()
-            if (player1.containsAll(conditionList)) {
-                announceWinner(1)
-                return
-            } else if (player2.containsAll(conditionList)) {
-                announceWinner(2)
-                return
+        //row1
+        if (Player1.contains(1) && Player1.contains(2) && Player1.contains(3)) {
+            winner = 1
+        }
+        if (Player2.contains(1) && Player2.contains(2) && Player2.contains(3)) {
+            winner = 2
+        }
+
+        //row2
+        if (Player1.contains(4) && Player1.contains(5) && Player1.contains(6)) {
+            winner = 1
+        }
+        if (Player2.contains(4) && Player2.contains(5) && Player2.contains(6)) {
+            winner = 2
+        }
+
+        //row3
+        if (Player1.contains(7) && Player1.contains(8) && Player1.contains(9)) {
+            winner = 1
+        }
+        if (Player2.contains(7) && Player2.contains(8) && Player2.contains(9)) {
+            winner = 2
+        }
+
+        //col1
+        if (Player1.contains(1) && Player1.contains(4) && Player1.contains(7)) {
+            winner = 1
+        }
+        if (Player2.contains(1) && Player2.contains(4) && Player2.contains(7)) {
+            winner = 2
+        }
+
+        //col2
+        if (Player1.contains(2) && Player1.contains(5) && Player1.contains(8)) {
+            winner = 1
+        }
+        if (Player2.contains(2) && Player2.contains(5) && Player2.contains(8)) {
+            winner = 2
+        }
+
+        //col3
+        if (Player1.contains(3) && Player1.contains(6) && Player1.contains(9)) {
+            winner = 1
+        }
+        if (Player2.contains(3) && Player2.contains(6) && Player2.contains(9)) {
+            winner = 2
+        }
+
+        //cross1
+        if (Player1.contains(1) && Player1.contains(5) && Player1.contains(9)) {
+            winner = 1
+        }
+        if (Player2.contains(1) && Player2.contains(5) && Player2.contains(9)) {
+            winner = 2
+        }
+
+        //cross2
+        if (Player1.contains(3) && Player1.contains(5) && Player1.contains(7)) {
+            winner = 1
+        }
+        if (Player2.contains(3) && Player2.contains(5) && Player2.contains(7)) {
+            winner = 2
+        }
+
+        if (winner != -1) {
+            if (winner == 1) {
+                if (setPlayer == 1) {
+                    Toast.makeText(this, "Player 1 Wins!!", Toast.LENGTH_SHORT).show()
+                    stopTouch()
+                } else {
+                    Toast.makeText(this, "You Won!!", Toast.LENGTH_SHORT).show()
+                    augmentaPuntuacio()
+                    val database = FirebaseDatabase.getInstance("https://globusnilomar-default-rtdb.firebaseio.com/")
+                    val reference = database.getReference("DATA BASE JUGADORS")
+                    stopTouch()
+                }
+            } else {
+                if (setPlayer == 1) {
+                    Toast.makeText(this, "Player 2 Wins!!", Toast.LENGTH_SHORT).show()
+                    stopTouch()
+                } else {
+                    Toast.makeText(this, "CPU Wins!!", Toast.LENGTH_SHORT).show()
+                    stopTouch()
+                }
             }
         }
-
-        if (player1.size + player2.size == 9) {
-            announceWinner(0)
+        if (winner == -1 && Player1.size + Player2.size == 9) {
+            Toast.makeText(this, "¡Empate!", Toast.LENGTH_SHORT).show()
+            stopTouch()
+        }
+        if (winner != -1 || (winner == -1 && Player1.size + Player2.size == 9)) {
+            val soundPool = SoundPool.Builder().setMaxStreams(1).build()
+            val soundId = soundPool.load(this, R.raw.sonido, 1)
+            soundPool.setOnLoadCompleteListener { soundPool, sampleId, status ->
+                if (status == 0) {
+                    soundPool.play(soundId, 1f, 1f, 0, 0, 1f)
+                }
+            }
         }
     }
 
+    fun augmentaPuntuacio() {
+        user = FirebaseAuth.getInstance().currentUser
+        val database = FirebaseDatabase.getInstance()
+        val bdreference = database.getReference("DATA BASE JUGADORS")
 
-    private fun announceWinner(winner: Int) {
-        gameActive = false
+        bdreference.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                for (ds in snapshot.children) {
+                    if (ds.child("Email").getValue(String::class.java) == user?.email) {
+                        val puntuacioString = ds.child("Puntuacio").getValue(String::class.java) ?: "0"
+                        val puntuacioInt = puntuacioString.toIntOrNull() ?: 0
 
-        when (winner) {
-            1 -> showToast("Player 1 Wins!!")
-            2 -> showToast(if (setPlayer == 1) "Player 2 Wins!!" else "CPU Wins!!")
-            else -> showToast("It's a Draw!!")
-        }
+                        // Verificar si la puntuación ya ha sido aumentada
+                        val puntuacionAumentada = ds.child("PuntuacionAumentada").getValue(Boolean::class.java) ?: false
+
+                        if (!puntuacionAumentada) {
+                            // Aumentar la puntuación solo si no se ha aumentado antes
+                            val nuevaPuntuacioInt = puntuacioInt + 10
+                            val nuevaPuntuacioString = nuevaPuntuacioInt.toString()
+
+                            bdreference.child(ds.key!!).child("Puntuacio").setValue(nuevaPuntuacioString)
+                            bdreference.child(ds.key!!).child("PuntuacionAumentada").setValue(true)
+                        }
+                    }
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Log.w("TAG", "Failed to read value.", error.toException())
+            }
+        })
     }
 
-    private fun showToast(message: String) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+    fun stopTouch() {
+        button1.isEnabled = false
+        button2.isEnabled = false
+        button3.isEnabled = false
+        button4.isEnabled = false
+        button5.isEnabled = false
+        button6.isEnabled = false
+        button7.isEnabled = false
+        button8.isEnabled = false
+        button9.isEnabled = false
     }
 
-    private fun autoPlay() {
-        if (!gameActive) return
-
+    fun AutoPlay() {
         val emptyCells = ArrayList<Int>()
         for (cellId in 1..9) {
-            if (!(player1.contains(cellId) || player2.contains(cellId))) {
+            if (Player1.contains(cellId) || Player2.contains(cellId)) {
+            } else {
                 emptyCells.add(cellId)
             }
         }
 
-        if (emptyCells.isNotEmpty()) {
-            val random = Random()
-            val randomIndex = random.nextInt(emptyCells.size)
-            val cellId = emptyCells[randomIndex]
+        val r = Random()
+        val randomIndex = r.nextInt(emptyCells.size - 0) + 0
+        val cellId = emptyCells[randomIndex]
 
-            val buSelect = buttonArray[cellId - 1]
-            playGame(cellId, buSelect)
+        val buSelect: Button?
+        buSelect = when (cellId) {
+            1 -> button1
+            2 -> button2
+            3 -> button3
+            4 -> button4
+            5 -> button5
+            6 -> button6
+            7 -> button7
+            8 -> button8
+            9 -> button9
+            else -> button1
         }
+
+        PlayGame(cellId, buSelect)
     }
 }

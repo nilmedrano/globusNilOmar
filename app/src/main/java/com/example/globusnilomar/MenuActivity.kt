@@ -1,15 +1,18 @@
 package com.example.globusnilomar
 
-import JocActivity
+import android.app.Activity
 import android.content.Intent
 import android.graphics.Typeface
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -18,6 +21,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.google.firebase.storage.FirebaseStorage
 import com.squareup.picasso.Picasso
 
 
@@ -40,6 +44,7 @@ class MenuActivity : AppCompatActivity() {
     lateinit var imatgePerfil: ImageView
     lateinit var database: FirebaseDatabase
     lateinit var bdreference: DatabaseReference
+    private val COD_SELECCIONAR_IMAGEN = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,16 +59,17 @@ class MenuActivity : AppCompatActivity() {
         tancarSessio.setOnClickListener(){
             tancalaSessio()
         }
-        PuntuacionsBtn.setOnClickListener(){
-            Toast.makeText(this,"PUNTUACIONS", Toast.LENGTH_SHORT).show()
-            val intent= Intent(this, ScoreActivity::class.java)
-            startActivity(intent)
-            finish()        }
+
+
         CreditsBtn.setOnClickListener(){
             Toast.makeText(this,"Credits", Toast.LENGTH_SHORT).show()
+            val intent= Intent(this, CreditsActivity::class.java)
+            startActivity(intent)
         }
         PuntuacionsBtn.setOnClickListener(){
             Toast.makeText(this,"Puntuacions", Toast.LENGTH_SHORT).show()
+            val intent= Intent(this, ScoreActivity::class.java)
+            startActivity(intent)
         }
         jugarBtn.setOnClickListener(){
             Toast.makeText(this,"JUGAR", Toast.LENGTH_SHORT).show()
@@ -93,9 +99,87 @@ class MenuActivity : AppCompatActivity() {
         //Assignem tipus de lletra al botó
         editarBtn.setTypeface(tf2)
         editarBtn.setOnClickListener(){
-            Toast.makeText(this,"EDITAR", Toast.LENGTH_SHORT).show()
+            changePasswd()
         }
 
+    }
+
+    private fun changePasswd() {
+        Toast.makeText(this, "HOLA",
+            Toast.LENGTH_LONG).show()
+        val user = FirebaseAuth.getInstance().currentUser
+        user?.let {
+            val email = user.email
+            email?.let {
+                FirebaseAuth.getInstance().sendPasswordResetEmail(email)
+                    .addOnCompleteListener { task ->
+                        if (task.isSuccessful) {
+                            val dialog = AlertDialog.Builder(this)
+                                .setTitle("CHANGE PASSWORD")
+                                .setMessage("You have been sent an email to change your password.")
+                                .setNegativeButton("DONE") { dialog, _ ->
+                                    dialog.dismiss()
+                                }
+                                .setCancelable(false)
+                                .create()
+                            dialog.show()
+                        } else {
+                            Toast.makeText(this, "Error sending the email to reset the password.",
+                                Toast.LENGTH_LONG).show()
+                        }
+                    }
+            }
+        }
+    }
+
+    fun changeImg(view: View){
+        Toast.makeText(this,"EDITAR", Toast.LENGTH_SHORT).show()
+        val intent = Intent(Intent.ACTION_PICK)
+        intent.type = "image/*"
+        startActivityForResult(intent, COD_SELECCIONAR_IMAGEN)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == COD_SELECCIONAR_IMAGEN && resultCode == Activity.RESULT_OK) {
+            val imagenSeleccionadaUri = data?.data
+            // Actualizar la imagen en la base de datos
+            if (imagenSeleccionadaUri != null) {
+                // Actualizar la imagen en Firebase Storage
+                subirImagenALmacenamiento(imagenSeleccionadaUri)
+            }
+        }
+    }
+    private fun subirImagenALmacenamiento(imagenUri: Uri) {
+        val uidUsuario = FirebaseAuth.getInstance().currentUser?.uid
+        if (uidUsuario != null) {
+            val referencia = FirebaseStorage.getInstance().getReference("imagenes_perfil/$uidUsuario")
+            referencia.putFile(imagenUri)
+                .addOnSuccessListener { taskSnapshot ->
+                    referencia.downloadUrl.addOnSuccessListener { uri ->
+                        // Actualizar la URL de la imagen en la base de datos
+                        actualizarURLImagenPerfil(uidUsuario, uri.toString())
+                    }
+                }
+                .addOnFailureListener { exception ->
+                    Toast.makeText(this, "Error al subir imagen: ${exception.message}", Toast.LENGTH_SHORT).show()
+                }
+        }
+    }
+
+    private fun actualizarURLImagenPerfil(uidUsuario: String, urlImagen: String) {
+        val referenciaBD = FirebaseDatabase.getInstance().getReference("DATA BASE JUGADORS/$uidUsuario/Imatge")
+        referenciaBD.setValue(urlImagen)
+            .addOnSuccessListener {
+                Toast.makeText(this, "Imagen actualizada correctamente", Toast.LENGTH_SHORT).show()
+                // Actualizar la imagen en ImageView
+                Glide.with(this)
+                    .load(urlImagen)
+                    .into(imatgePerfil)
+            }
+            .addOnFailureListener { exception ->
+                Toast.makeText(this, "Error al actualizar la imagen: ${exception.message}", Toast.LENGTH_SHORT).show()
+            }
     }
     private fun Usuarilogejat()
     {
@@ -112,7 +196,6 @@ class MenuActivity : AppCompatActivity() {
         }
     }
 
-    // Aquest mètode s'executarà quan s'obri el minijoc
     override fun onStart() {
         Usuarilogejat()
         super.onStart()

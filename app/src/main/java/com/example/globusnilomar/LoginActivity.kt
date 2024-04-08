@@ -7,6 +7,7 @@ import android.util.Patterns
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 
@@ -15,11 +16,14 @@ lateinit var correoLogin : EditText
 lateinit var passLogin : EditText
 lateinit var BtnLogin : Button
 lateinit var auth2 : FirebaseAuth //FIREBASE AUTENTIFICACIO
+lateinit var btnContra : Button
 
 class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login2)
+        //btnContra = findViewById<Button>(R.id.BtnCanviContrasenya)
+
         // Busquem a R els elements als que apunten les variables
         correoLogin =findViewById<EditText>(R.id.correoEt2)
         passLogin =findViewById<EditText>(R.id.passEt2)
@@ -41,6 +45,37 @@ class LoginActivity : AppCompatActivity() {
             else
             {
                 LogindeJugador(email, passw)
+            }
+        }
+        btnContra.setOnClickListener(){
+            changePaswd()
+        }
+    }
+
+    private fun changePaswd() {
+        Toast.makeText(this, "HOLA",
+            Toast.LENGTH_LONG).show()
+        val user = FirebaseAuth.getInstance().currentUser
+        user?.let {
+            val email = user.email
+            email?.let {
+                FirebaseAuth.getInstance().sendPasswordResetEmail(email)
+                    .addOnCompleteListener { task ->
+                        if (task.isSuccessful) {
+                            val dialog = AlertDialog.Builder(this)
+                                .setTitle("CHANGE PASSWORD")
+                                .setMessage("You have been sent an email to change your password.")
+                                .setNegativeButton("DONE") { dialog, _ ->
+                                    dialog.dismiss()
+                                }
+                                .setCancelable(false)
+                                .create()
+                            dialog.show()
+                        } else {
+                            Toast.makeText(this, "Error sending the email to reset the password.",
+                                Toast.LENGTH_LONG).show()
+                        }
+                    }
             }
         }
     }
