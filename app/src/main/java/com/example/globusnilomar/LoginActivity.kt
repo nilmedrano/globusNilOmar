@@ -47,12 +47,12 @@ class LoginActivity : AppCompatActivity() {
                 LogindeJugador(email, passw)
             }
         }
-        btnContra.setOnClickListener(){
+        /*btnContra.setOnClickListener(){
             changePaswd()
-        }
+        }*/
     }
 
-    private fun changePaswd() {
+    /*private fun changePaswd() {
         Toast.makeText(this, "HOLA",
             Toast.LENGTH_LONG).show()
         val user = FirebaseAuth.getInstance().currentUser
@@ -78,7 +78,7 @@ class LoginActivity : AppCompatActivity() {
                     }
             }
         }
-    }
+    }*/
 
     private fun LogindeJugador(email: String, passw: String) {
         auth2.signInWithEmailAndPassword(email, passw)
