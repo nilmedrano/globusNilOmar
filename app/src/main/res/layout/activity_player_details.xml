@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/bluesoft"
     android:padding="16dp"
-    android:paddingStart="10dp"
+    android:paddingStart="13dp"
     tools:context=".PlayerDetails">
 
     <androidx.cardview.widget.CardView
@@ -26,29 +26,51 @@
             android:layout_height="wrap_content"
             android:padding="16dp">
 
+            <!-- Marco blanco alrededor de la imagen -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/imageFrame"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_marginTop="30dp"
+                app:cardBackgroundColor="@android:color/white"
+                app:cardCornerRadius="90dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="MissingConstraints">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/imageFrame2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    app:cardBackgroundColor="@android:color/white"
+                    app:cardCornerRadius="90dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="MissingConstraints">
+
+                    <ImageView
+                        android:id="@+id/imatgeD"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
+                        tools:src="@drawable/fperfil" />
+                </androidx.cardview.widget.CardView>
+
+            </androidx.cardview.widget.CardView>
+
             <TextView
                 android:id="@+id/nomD"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
                 android:textColor="#FFFFFF"
                 android:textSize="32sp"
                 android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="@id/imageFrame"
+                app:layout_constraintStart_toEndOf="@id/imageFrame"
+                app:layout_constraintTop_toTopOf="@id/imageFrame"
                 tools:text="Nombre" />
-
-            <ImageView
-                android:id="@+id/imatgeD"
-                android:layout_width="200dp"
-                android:layout_height="200dp"
-                android:layout_marginTop="30dp"
-                android:layout_marginBottom="20dp"
-                android:scaleType="centerCrop"
-                app:layout_constraintBottom_toTopOf="@+id/puntuacioLabel"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/nomD"
-                tools:src="@drawable/fperfil" />
 
             <TextView
                 android:id="@+id/puntuacioLabel"
@@ -60,7 +82,7 @@
                 android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imatgeD" />
+                app:layout_constraintTop_toBottomOf="@+id/imageFrame" />
 
             <TextView
                 android:id="@+id/puntuacioD"
@@ -167,3 +189,4 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>
+

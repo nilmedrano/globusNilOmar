@@ -18,4 +18,6 @@
     <string name="fecha">Data</string>
     <string name="hello_blank_fragment">Hola</string>
     <string name="CANVICONTRASENYA">Canviar contrasenya</string>
+    <string name="GameOver">You Lost</string>
+    <string name="P1Wins">Player 1 Wins!</string>
 </resources>

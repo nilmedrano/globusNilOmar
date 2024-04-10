@@ -120,7 +120,7 @@ class RegisterActivity : AppCompatActivity() {
                     /*val map = hashMapOf<String, Any>(
                         "photo" to downloadUri
                     )*/
-                    Toast.makeText(this, "Update photo success", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, getString(R.string.ImageUpdated), Toast.LENGTH_SHORT).show()
 
                     // Mostrar la imagen en el AppCompatImageView 'foto'
                     Glide.with(this)
@@ -152,7 +152,7 @@ class RegisterActivity : AppCompatActivity() {
                 }
             }
             .addOnFailureListener { e ->
-                Toast.makeText(this, "Failed to upload photo: ${e.message}", Toast.LENGTH_SHORT)
+                Toast.makeText(this, getString(R.string.ErrorImageUpdate) + " ${e.message}", Toast.LENGTH_SHORT)
                     .show()
                 progressDialog.dismiss()
             }
@@ -167,7 +167,7 @@ class RegisterActivity : AppCompatActivity() {
                         RegistrarJugadorEnDB(it)
                     }
                 } else {
-                    Toast.makeText(baseContext, "Authentication failed.", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(baseContext, getString(R.string.AuthFail), Toast.LENGTH_SHORT).show()
                 }
             }
     }
@@ -201,13 +201,13 @@ class RegisterActivity : AppCompatActivity() {
 
         reference.child(uid).setValue(dadesJugador)
             .addOnSuccessListener {
-                Toast.makeText(this, "User registered successfully", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.RegisterSucces), Toast.LENGTH_SHORT).show()
                 val intent = Intent(this, MenuActivity::class.java)
                 startActivity(intent)
                 finish()
             }
             .addOnFailureListener { e ->
-                Toast.makeText(this, "Failed to register user: ${e.message}", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.RegisterFail)+ " ${e.message}", Toast.LENGTH_SHORT).show()
             }
     }
 }

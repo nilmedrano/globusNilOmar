@@ -85,12 +85,12 @@ class LoginActivity : AppCompatActivity() {
             .addOnCompleteListener(this)
             { task ->
                 if (task.isSuccessful) {
-                    val tx: String = "Benvingut "+ email
+                    val tx: String = getString(R.string.Welcome) +  " " +email
                     Toast.makeText(this, tx, Toast.LENGTH_LONG).show()
                     val user = auth2.currentUser
                     updateUI(user)
                 } else {
-                    Toast.makeText(this, "ERROR Autentificació",
+                    Toast.makeText(this, getString(R.string.AuthFail),
                         Toast.LENGTH_LONG).show()
                 }
             }

@@ -29,11 +29,9 @@ class LoginRegisterActivity : AppCompatActivity() {
         var BTMLOGIN = findViewById<Button>(R.id.BTMLOGIN);
         var BTMREGISTRO = findViewById<Button>(R.id.BTMREGISTRO);
         BTMLOGIN.setOnClickListener() {
-            Toast.makeText(this, "click botó login", Toast.LENGTH_LONG).show();
             canviarActivity(LoginActivity::class.java)
         }
         BTMREGISTRO.setOnClickListener() {
-            Toast.makeText(this, "click botó Registre", Toast.LENGTH_LONG).show();
             canviarActivity(RegisterActivity::class.java)
         }
     }

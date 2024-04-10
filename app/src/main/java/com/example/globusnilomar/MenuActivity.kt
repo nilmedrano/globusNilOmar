@@ -62,17 +62,14 @@ class MenuActivity : AppCompatActivity() {
 
 
         CreditsBtn.setOnClickListener(){
-            Toast.makeText(this,"Credits", Toast.LENGTH_SHORT).show()
             val intent= Intent(this, CreditsActivity::class.java)
             startActivity(intent)
         }
         PuntuacionsBtn.setOnClickListener(){
-            Toast.makeText(this,"Puntuacions", Toast.LENGTH_SHORT).show()
             val intent= Intent(this, ScoreActivity::class.java)
             startActivity(intent)
         }
         jugarBtn.setOnClickListener(){
-            Toast.makeText(this,"JUGAR", Toast.LENGTH_SHORT).show()
             val intent= Intent(this, JocActivity::class.java)
             startActivity(intent)
             finish()
@@ -105,8 +102,6 @@ class MenuActivity : AppCompatActivity() {
     }
 
     private fun changePasswd() {
-        Toast.makeText(this, "HOLA",
-            Toast.LENGTH_LONG).show()
         val user = FirebaseAuth.getInstance().currentUser
         user?.let {
             val email = user.email
@@ -124,7 +119,7 @@ class MenuActivity : AppCompatActivity() {
                                 .create()
                             dialog.show()
                         } else {
-                            Toast.makeText(this, "Error sending the email to reset the password.",
+                            Toast.makeText(this, getString(R.string.ErrorSendingEmail),
                                 Toast.LENGTH_LONG).show()
                         }
                     }
@@ -133,7 +128,6 @@ class MenuActivity : AppCompatActivity() {
     }
 
     fun changeImg(view: View){
-        Toast.makeText(this,"EDITAR", Toast.LENGTH_SHORT).show()
         val intent = Intent(Intent.ACTION_PICK)
         intent.type = "image/*"
         startActivityForResult(intent, COD_SELECCIONAR_IMAGEN)
@@ -162,7 +156,7 @@ class MenuActivity : AppCompatActivity() {
                     }
                 }
                 .addOnFailureListener { exception ->
-                    Toast.makeText(this, "Error al subir imagen: ${exception.message}", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, getString(R.string.ErrorSendingImage)+ " ${exception.message}", Toast.LENGTH_SHORT).show()
                 }
         }
     }
@@ -171,21 +165,21 @@ class MenuActivity : AppCompatActivity() {
         val referenciaBD = FirebaseDatabase.getInstance().getReference("DATA BASE JUGADORS/$uidUsuario/Imatge")
         referenciaBD.setValue(urlImagen)
             .addOnSuccessListener {
-                Toast.makeText(this, "Imagen actualizada correctamente", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.ImageUpdated), Toast.LENGTH_SHORT).show()
                 // Actualizar la imagen en ImageView
                 Glide.with(this)
                     .load(urlImagen)
                     .into(imatgePerfil)
             }
             .addOnFailureListener { exception ->
-                Toast.makeText(this, "Error al actualizar la imagen: ${exception.message}", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.ErrorImageUpdate) + " ${exception.message}", Toast.LENGTH_SHORT).show()
             }
     }
     private fun Usuarilogejat()
     {
         if (user !=null)
         {
-            Toast.makeText(this,"Jugador logejat",
+            Toast.makeText(this, getString(R.string.LogSuccess),
                 Toast.LENGTH_SHORT).show()
         }
         else

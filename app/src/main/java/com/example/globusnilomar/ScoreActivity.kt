@@ -62,8 +62,6 @@ class ScoreActivity : AppCompatActivity() {
                     jugadorRecyclerView.adapter = adapter
                     adapter.setOnItemClickListener(object : ConfigScoreJugador.OnItemClickListener{
                         override fun onItemClick(position: Int) {
-                            Toast.makeText(this@ScoreActivity, "Has clicat a .$position", Toast.LENGTH_SHORT).show()
-
                             val intent = Intent(this@ScoreActivity, PlayerDetails::class.java)
                             intent.putExtra("Nom", jugadorArrayList[position].Nom)
                             intent.putExtra("Puntuacio", jugadorArrayList[position].Puntuacio)

@@ -167,7 +167,7 @@ class JocActivity : AppCompatActivity() {
                 try {
                     AutoPlay()
                 } catch (ex: Exception) {
-                    Toast.makeText(this, "Game Over", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, getString(R.string.GameOver) , Toast.LENGTH_SHORT).show()
                 }
             }
         } else {
@@ -251,10 +251,10 @@ class JocActivity : AppCompatActivity() {
         if (winner != -1) {
             if (winner == 1) {
                 if (setPlayer == 1) {
-                    Toast.makeText(this, "Player 1 Wins!!", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, getString(R.string.P1Wins), Toast.LENGTH_SHORT).show()
                     stopTouch()
                 } else {
-                    Toast.makeText(this, "You Won!!", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, getString(R.string.YouWon), Toast.LENGTH_SHORT).show()
                     augmentaPuntuacio()
                     val database = FirebaseDatabase.getInstance("https://globusnilomar-default-rtdb.firebaseio.com/")
                     val reference = database.getReference("DATA BASE JUGADORS")
@@ -262,16 +262,16 @@ class JocActivity : AppCompatActivity() {
                 }
             } else {
                 if (setPlayer == 1) {
-                    Toast.makeText(this, "Player 2 Wins!!", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, getString(R.string.P2Wins), Toast.LENGTH_SHORT).show()
                     stopTouch()
                 } else {
-                    Toast.makeText(this, "CPU Wins!!", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, getString(R.string.CPUWins), Toast.LENGTH_SHORT).show()
                     stopTouch()
                 }
             }
         }
         if (winner == -1 && Player1.size + Player2.size == 9) {
-            Toast.makeText(this, "¡Empate!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.Tie), Toast.LENGTH_SHORT).show()
             stopTouch()
         }
         if (winner != -1 || (winner == -1 && Player1.size + Player2.size == 9)) {

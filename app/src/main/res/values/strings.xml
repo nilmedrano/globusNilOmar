@@ -34,5 +34,20 @@
     <string name="fecha">Date</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="CANVICONTRASENYA">Change password</string>
+    <string name="GameOver">You Lost</string>
+    <string name="P1Wins">Player 1 Wins!</string>
+    <string name="YouWon">You Won!</string>
+    <string name="P2Wins">Player 2 Wins!</string>
+    <string name="CPUWins">CPU Wins!</string>
+    <string name="Tie">Tie</string>
+    <string name="Welcome">Welcome</string>
+    <string name="ErrorSendingEmail">Error sending the email to reset the password.</string>
+    <string name="ErrorSendingImage">Error uploading image:</string>
+    <string name="ImageUpdated">Image updated correctly</string>
+    <string name="ErrorImageUpdate">Error updating the image:</string>
+    <string name="LogSuccess">Player logged in</string>
+    <string name="AuthFail">Authentication failed.</string>
+    <string name="RegisterSucces">User registered successfully.</string>
+    <string name="RegisterFail">Failed to register user:</string>
 
 </resources>
