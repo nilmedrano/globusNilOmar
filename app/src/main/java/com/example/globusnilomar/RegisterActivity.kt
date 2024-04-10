@@ -48,7 +48,7 @@ class RegisterActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
         uidFoto = "0"
-        downloadUri = "-1"
+        downloadUri = "https://www.barakaldotiendaveterinaria.es/blog/wp-content/uploads/2018/12/blobfish.jpg"
         auth = FirebaseAuth.getInstance()
         correoEt = findViewById(R.id.correoEt)
         passEt = findViewById(R.id.passEt)
