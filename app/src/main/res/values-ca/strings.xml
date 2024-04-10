@@ -18,6 +18,19 @@
     <string name="fecha">Data</string>
     <string name="hello_blank_fragment">Hola</string>
     <string name="CANVICONTRASENYA">Canviar contrasenya</string>
-    <string name="GameOver">You Lost</string>
-    <string name="P1Wins">Player 1 Wins!</string>
+    <string name="GameOver">Has perdut</string>
+    <string name="P1Wins">Jugador 1 Guanya!</string>
+    <string name="YouWon">Has Guanyat!</string>
+    <string name="P2Wins">Jugador 2 Guanya!</string>
+    <string name="CPUWins">CPU Guanya!</string>
+    <string name="Tie">Empat</string>
+    <string name="Welcome">Benvingut</string>
+    <string name="ErrorSendingEmail">S\'ha produït un error en enviar el correu electrònic per restablir la contrasenya.</string>
+    <string name="ErrorSendingImage">Error en penjar la imatge:</string>
+    <string name="ImageUpdated">Imatge actualitzada correctament</string>
+    <string name="ErrorImageUpdate">S\'ha produït un error en enviar el correu electrònic per restablir la contrasenya.</string>
+    <string name="LogSuccess">El jugador ha iniciat sessió</string>
+    <string name="AuthFail">Autenticació fallida.</string>
+    <string name="RegisterSucces">Usuari registrat correctament.</string>
+    <string name="RegisterFail">No s\'ha pogut registrar l\'usuari:</string>
 </resources>
