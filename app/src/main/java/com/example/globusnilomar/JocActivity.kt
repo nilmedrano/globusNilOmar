@@ -32,6 +32,7 @@ lateinit var PVP: Button
 lateinit var PVC: Button
 lateinit var menuBtn: Button
 
+var puntuacionAumentada = false;
 var user: FirebaseUser? = null;
 var PVPChoose: Boolean = true
 
@@ -94,6 +95,7 @@ class JocActivity : AppCompatActivity() {
     }
 
     fun restartGame(view: View) {
+        puntuacionAumentada = false;
         // Habilitar los botones de selección de modo
         PVP.isEnabled = true
         PVC.isEnabled = true
@@ -296,9 +298,10 @@ class JocActivity : AppCompatActivity() {
                         val puntuacioInt = puntuacioString.toIntOrNull() ?: 0
 
                         // Verificar si la puntuación ya ha sido aumentada
-                        val puntuacionAumentada = ds.child("PuntuacionAumentada").getValue(Boolean::class.java) ?: false
+                        // val puntuacionAumentada = ds.child("PuntuacionAumentada").getValue(Boolean::class.java) ?: false
 
                         if (!puntuacionAumentada) {
+                            puntuacionAumentada = true;
                             // Aumentar la puntuación solo si no se ha aumentado antes
                             val nuevaPuntuacioInt = puntuacioInt + 10
                             val nuevaPuntuacioString = nuevaPuntuacioInt.toString()
