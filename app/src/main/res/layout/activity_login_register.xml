@@ -1,4 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#d2edf4"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginEnd="3dp"
+        android:layout_marginBottom="3dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="20dp">
+        <!-- botó de login -->
+        <!--botó de registrar-se -->
+
+        <Button
+            android:id="@+id/BTMLOGIN"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/button_login"
+            android:backgroundTint="@color/blueberry"
+            android:text="@string/BTMLOGIN"
+            android:textColor="@color/bluesoft" />
+
+        <Button
+            android:id="@+id/BTMREGISTRO"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_login"
+            android:text="@string/BTMREGISTRO"
+            android:textColor="@color/bluesoft" />
+
+    </LinearLayout>
+</RelativeLayout>
+
+
+<!--
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -6,4 +51,4 @@
     android:layout_height="match_parent"
     tools:context=".LoginRegisterActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout> -->

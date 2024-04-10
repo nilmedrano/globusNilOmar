@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">GlobusNilOmar</string>
+    <string name="BTMLOGIN">Login</string>
+    <string name="BTMREGISTRO">Registre</string>
+    <string name="TancarSessio">Tancar Sessió</string>
+    <string name="miPuntuaciotxt">Puntuació</string>
+    <string name="BTMELIMINAR">Eliminar</string>
+    <string name="restart">Reiniciar</string>
+    <string name="BTMEDITAR">Editar imatge</string>
+    <string name="MenuTxt">MENÚ</string>
+    <string name="jugarBtn">Jugar</string>
+    <string name="PuntuacionsBtn">Puntuacions</string>
+    <string name="CreditsBtn">Crèdits</string>
+    <string name="edatEt">Edat</string>
+    <string name="poblacioEt">Població</string>
+    <string name="editarBtn">Canviar Imatge</string>
+    <string name="fecha">Data</string>
+    <string name="hello_blank_fragment">Hola</string>
+    <string name="CANVICONTRASENYA">Canviar contrasenya</string>
+</resources>

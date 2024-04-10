@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#d2edf4"
+    tools:context=".MenuActivity">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="30dp">
+
+        <TextView
+            android:id="@+id/puntuacio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5sp"
+            android:gravity="center"
+            android:text="@string/puntuacio"
+            android:textColor="@color/blueberry"
+            android:textSize="45dp"
+            android:textStyle="bold" />
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="140dp"
+            android:layout_height="140dp"
+            app:cardBackgroundColor="@color/blueberry"
+            app:cardCornerRadius="90dp"
+            android:layout_marginBottom="15dp"
+            >
+
+            <ImageView
+                android:id="@+id/imatgePerfil"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/imatgemenu"
+                android:onClick="changeImg"/>
+
+        </androidx.cardview.widget.CardView>
+        <TextView
+            android:id="@+id/uid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textAlignment="center"
+            android:textStyle="italic"
+            android:layout_marginBottom="10dp"/>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <!-- Campo de correo -->
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_marginTop="10dp"
+                            android:hint="@string/prompt_email">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/correo"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/correo"
+                                android:maxLines="1"
+                                android:ellipsize="end"
+                                android:enabled="false" /> <!-- Bloquear edición -->
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <!-- Campo de nombre -->
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_marginTop="10dp"
+                            android:hint="@string/prompt_username">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/nom"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/nom"
+                                android:maxLines="1"
+                                android:ellipsize="end"
+                                android:enabled="false" /> <!-- Bloquear edición -->
+                        </com.google.android.material.textfield.TextInputLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <!-- Campo de edad -->
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginTop="10dp"
+                        android:hint="@string/edatEt">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edat"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/edat"
+                            android:textColorHint="@android:color/black"
+                            android:enabled="false" /> <!-- Bloquear edición -->
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <!-- Campo de población -->
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginTop="10dp"
+                        android:hint="@string/poblacioEt">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/poblacio"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/poblacio"
+                            android:enabled="false" /> <!-- Bloquear edición -->
+                    </com.google.android.material.textfield.TextInputLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+
+        <Button
+            android:id="@+id/jugarBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/button_login"
+            android:text="@string/jugarBtn"
+            android:textColor="@color/bluesoft" />
+
+        <Button
+            android:id="@+id/editarBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/button_login"
+            android:text="@string/CANVICONTRASENYA"
+            android:textColor="@color/bluesoft" />
+
+        <Button
+            android:id="@+id/PuntuacionsBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/button_login"
+            android:text="@string/PuntuacionsBtn"
+
+            android:textColor="@color/bluesoft" />
+
+        <Button
+            android:id="@+id/CreditsBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/button_login"
+            android:text="@string/CreditsBtn"
+            android:textColor="@color/bluesoft" />
+
+        <Button
+            android:id="@+id/tancarSessio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/button_logout"
+            android:text="@string/TancarSessio"
+            android:textColor="@color/blueberry"
+            android:textStyle="bold" />
+    </LinearLayout>
+</RelativeLayout>
