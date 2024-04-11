@@ -27,164 +27,203 @@
             android:padding="16dp">
 
             <!-- Marco blanco alrededor de la imagen -->
-            <androidx.cardview.widget.CardView
-                android:id="@+id/imageFrame"
-                android:layout_width="120dp"
-                android:layout_height="120dp"
-                android:layout_marginTop="30dp"
-                app:cardBackgroundColor="@android:color/white"
-                app:cardCornerRadius="90dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:ignore="MissingConstraints">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="16dp">
 
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/imageFrame2"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="8dp"
-                    app:cardBackgroundColor="@android:color/white"
-                    app:cardCornerRadius="90dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:ignore="MissingConstraints">
+                    android:orientation="horizontal">
 
-                    <ImageView
-                        android:id="@+id/imatgeD"
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/imageFrame"
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
+                        app:cardBackgroundColor="@android:color/white"
+                        app:cardCornerRadius="90dp"
+                        tools:ignore="MissingConstraints">
+
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/imageFrame2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="8dp"
+                            app:cardBackgroundColor="@android:color/white"
+                            app:cardCornerRadius="90dp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:ignore="MissingConstraints">
+
+                            <ImageView
+                                android:id="@+id/imatgeD"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:scaleType="centerCrop"
+                                tools:src="@drawable/fperfil" />
+                        </androidx.cardview.widget.CardView>
+
+                    </androidx.cardview.widget.CardView>
+
+
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:scaleType="centerCrop"
-                        tools:src="@drawable/fperfil" />
-                </androidx.cardview.widget.CardView>
+                        android:orientation="vertical">
 
-            </androidx.cardview.widget.CardView>
+                        <TextView
+                            android:id="@+id/nomD"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:textColor="#FFFFFF"
+                            android:textSize="32sp"
+                            android:textStyle="bold"
+                            tools:text="Nombre" />
 
-            <TextView
-                android:id="@+id/nomD"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:textColor="#FFFFFF"
-                android:textSize="32sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@id/imageFrame"
-                app:layout_constraintStart_toEndOf="@id/imageFrame"
-                app:layout_constraintTop_toTopOf="@id/imageFrame"
-                tools:text="Nombre" />
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/puntuacioLabel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
-                android:text="@string/miPuntuaciotxt"
-                android:textColor="#FFFFFF"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageFrame" />
+                            <TextView
+                                android:id="@+id/puntuacioLabel"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="16dp"
+                                android:text="@string/miPuntuaciotxt"
+                                android:textColor="#FFFFFF"
+                                android:textSize="20sp"
+                                android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/puntuacioD"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingStart="10dp"
-                android:textColor="#FFFFFF"
-                android:textSize="20sp"
-                app:layout_constraintStart_toEndOf="@+id/puntuacioLabel"
-                app:layout_constraintTop_toTopOf="@+id/puntuacioLabel"
-                tools:text="0" />
+                            <TextView
+                                android:id="@+id/puntuacioD"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="7dp"
+                                android:textColor="#FFFFFF"
+                                android:textSize="20sp"
+                                tools:text="0" />
+                        </LinearLayout>
 
-            <TextView
-                android:id="@+id/dataLabel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/fecha"
-                android:textColor="#FFFFFF"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/puntuacioD" />
+                    </LinearLayout>
 
-            <TextView
-                android:id="@+id/dataD"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingStart="10dp"
-                android:textColor="#FFFFFF"
-                android:textSize="20sp"
-                app:layout_constraintStart_toEndOf="@+id/dataLabel"
-                app:layout_constraintTop_toTopOf="@+id/dataLabel"
-                tools:text="Apr 5, 2024" />
+                </LinearLayout>
 
-            <TextView
-                android:id="@+id/edatLabel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/edatEt"
-                android:textColor="#FFFFFF"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/dataD"
-                tools:text="Age" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/edatD"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingStart="10dp"
-                android:textColor="#FFFFFF"
-                android:textSize="20sp"
-                app:layout_constraintStart_toEndOf="@+id/edatLabel"
-                app:layout_constraintTop_toTopOf="@+id/edatLabel"
-                tools:text="0" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/emailLabel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/prompt_email"
-                android:textColor="#FFFFFF"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/edatD"
-                tools:text="@string/prompt_email" />
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/emailD"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingStart="10dp"
-                android:textColor="#FFFFFF"
-                android:textSize="20sp"
-                app:layout_constraintStart_toEndOf="@+id/emailLabel"
-                app:layout_constraintTop_toTopOf="@+id/emailLabel"
-                tools:text="correo@example.com" />
+                            <!-- Campo de correo -->
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/emailLabel"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:layout_weight="1"
+                                android:hint="@string/prompt_email"
+                                android:textColorHint="#FFFFFF">
 
-            <TextView
-                android:id="@+id/poblacioLabel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/poblacioEt"
-                android:textColor="#FFFFFF"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/emailD"
-                tools:text="Población:" />
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/emailD"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:ellipsize="end"
+                                    android:enabled="false"
+                                    android:maxLines="1"
+                                    android:text="@string/correo"
+                                    android:textColor="#FFFFFF"
+                                    android:textColorHint="#FFFFFF" />
+                            </com.google.android.material.textfield.TextInputLayout>
 
-            <TextView
-                android:id="@+id/poblacioD"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingStart="10dp"
-                android:textColor="#FFFFFF"
-                android:textSize="20sp"
-                app:layout_constraintStart_toEndOf="@+id/poblacioLabel"
-                app:layout_constraintTop_toTopOf="@+id/poblacioLabel"
-                tools:text="Ciudad" />
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/dataLabel"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:layout_weight="1"
+                                android:hint="@string/fecha"
+                                android:textColorHint="#FFFFFF">
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/dataD"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:ellipsize="end"
+                                    android:enabled="false"
+                                    android:maxLines="1"
+                                    android:text="Apr 5, 2024"
+                                    android:textColor="#FFFFFF"
+                                    android:textColorHint="#FFFFFF" /> <!-- Bloquear edición -->
+                            </com.google.android.material.textfield.TextInputLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <!-- Campo de edad -->
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/edatLabel"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:layout_weight="1"
+                            android:hint="@string/edatEt"
+                            android:textColorHint="#FFFFFF">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/edatD"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:enabled="false"
+                                android:text="@string/edat"
+                                android:textColor="#FFFFFF"
+                                android:textColorHint="#FFFFFF" /> <!-- Bloquear edición -->
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <!-- Campo de población -->
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/poblacioLabel"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:layout_weight="1"
+                            android:hint="@string/poblacioEt"
+                            android:textColorHint="#FFFFFF">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/poblacioD"
+
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:enabled="false"
+                                android:text="@string/poblacio"
+                                android:textColor="#FFFFFF"
+                                android:textColorHint="#FFFFFF" />
+                        </com.google.android.material.textfield.TextInputLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>

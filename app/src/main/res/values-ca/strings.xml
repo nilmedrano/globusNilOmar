@@ -29,7 +29,7 @@
     <string name="ErrorSendingImage">Error en penjar la imatge:</string>
     <string name="ImageUpdated">Imatge actualitzada correctament</string>
     <string name="ErrorImageUpdate">S\'ha produït un error en enviar el correu electrònic per restablir la contrasenya.</string>
-    <string name="LogSuccess">El jugador ha iniciat sessió</string>
+    <string name="LogSuccess">Has iniciat sessió</string>
     <string name="AuthFail">Autenticació fallida.</string>
     <string name="RegisterSucces">Usuari registrat correctament.</string>
     <string name="RegisterFail">No s\'ha pogut registrar l\'usuari:</string>
