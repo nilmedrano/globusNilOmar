@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginEnd="8dp"
     android:background="@color/bluesoft"
     android:padding="16dp"
     android:paddingStart="13dp"
@@ -135,42 +136,68 @@
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="10dp"
-                                android:layout_weight="1"
+                                android:layout_weight="0.9"
+                                android:background="#00FF0000"
+                                android:backgroundTint="#FFFFFF"
                                 android:hint="@string/prompt_email"
-                                android:textColorHint="#FFFFFF">
+                                android:textColorHint="#FFFFFF"
+                                app:boxBackgroundColor="#FFFFFF"
+                                app:boxStrokeColor="#FFFFFF"
+                                app:cursorColor="#FFFFFF"
+                                app:endIconTint="#FFFFFF"
+                                app:hintTextColor="#FFFFFF"
+                                app:passwordToggleTint="#FFFFFF"
+                                app:startIconTint="#FFFFFF">
 
                                 <com.google.android.material.textfield.TextInputEditText
                                     android:id="@+id/emailD"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
+                                    android:layout_marginEnd="8dp"
+                                    android:background="@drawable/edittext_background"
                                     android:ellipsize="end"
                                     android:enabled="false"
                                     android:maxLines="1"
+                                    android:paddingTop="3dp"
+                                    android:paddingBottom="3dp"
                                     android:text="@string/correo"
                                     android:textColor="#FFFFFF"
                                     android:textColorHint="#FFFFFF" />
+
                             </com.google.android.material.textfield.TextInputLayout>
 
                             <com.google.android.material.textfield.TextInputLayout
-                                android:id="@+id/dataLabel"
+                                android:id="@+id/edatLabel"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="10dp"
-                                android:layout_weight="1"
-                                android:hint="@string/fecha"
-                                android:textColorHint="#FFFFFF">
+                                android:layout_weight="0.75"
+                                android:background="#00FF0000"
+                                android:backgroundTint="#FFFFFF"
+                                android:hint="@string/edatEt"
+                                android:textColorHint="#FFFFFF"
+                                app:boxBackgroundColor="#FFFFFF"
+                                app:boxStrokeColor="#FFFFFF"
+                                app:cursorColor="#FFFFFF"
+                                app:endIconTint="#FFFFFF"
+                                app:hintTextColor="#FFFFFF"
+                                app:passwordToggleTint="#FFFFFF"
+                                app:startIconTint="#FFFFFF">
 
                                 <com.google.android.material.textfield.TextInputEditText
-                                    android:id="@+id/dataD"
+                                    android:id="@+id/edatD"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:ellipsize="end"
+                                    android:layout_weight="10"
+                                    android:background="@drawable/edittext_background"
                                     android:enabled="false"
-                                    android:maxLines="1"
-                                    android:text="Apr 5, 2024"
+                                    android:paddingTop="3dp"
+                                    android:paddingBottom="3dp"
+                                    android:text="@string/edat"
                                     android:textColor="#FFFFFF"
                                     android:textColorHint="#FFFFFF" /> <!-- Bloquear edición -->
                             </com.google.android.material.textfield.TextInputLayout>
+
                         </LinearLayout>
                     </LinearLayout>
 
@@ -180,45 +207,74 @@
                         android:orientation="horizontal">
 
                         <!-- Campo de edad -->
+
+                        <!-- Campo de población -->
                         <com.google.android.material.textfield.TextInputLayout
-                            android:id="@+id/edatLabel"
+                            android:id="@+id/dataLabel"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
-                            android:layout_weight="1"
-                            android:hint="@string/edatEt"
-                            android:textColorHint="#FFFFFF">
+                            android:layout_weight="0.9"
+                            android:background="#00FF0000"
+                            android:backgroundTint="#FFFFFF"
+                            android:hint="@string/fecha"
+                            android:textColorHint="#FFFFFF"
+                            app:boxBackgroundColor="#FFFFFF"
+                            app:boxStrokeColor="#FFFFFF"
+                            app:cursorColor="#FFFFFF"
+                            app:endIconTint="#FFFFFF"
+                            app:hintTextColor="#FFFFFF"
+                            app:passwordToggleTint="#FFFFFF"
+                            app:startIconTint="#FFFFFF">
 
                             <com.google.android.material.textfield.TextInputEditText
-                                android:id="@+id/edatD"
+                                android:id="@+id/dataD"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:layout_marginEnd="8dp"
+                                android:background="@drawable/edittext_background"
+                                android:ellipsize="end"
                                 android:enabled="false"
-                                android:text="@string/edat"
+                                android:maxLines="1"
+                                android:paddingTop="3dp"
+                                android:paddingBottom="3dp"
+                                android:text="Apr 5, 2024"
                                 android:textColor="#FFFFFF"
                                 android:textColorHint="#FFFFFF" /> <!-- Bloquear edición -->
                         </com.google.android.material.textfield.TextInputLayout>
 
-                        <!-- Campo de población -->
                         <com.google.android.material.textfield.TextInputLayout
                             android:id="@+id/poblacioLabel"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
-                            android:layout_weight="1"
+                            android:layout_weight="0.75"
+                            android:background="#00FF0000"
+                            android:backgroundTint="#FFFFFF"
                             android:hint="@string/poblacioEt"
-                            android:textColorHint="#FFFFFF">
+                            android:textColorHint="#FFFFFF"
+                            app:boxBackgroundColor="#FFFFFF"
+                            app:boxStrokeColor="#FFFFFF"
+                            app:cursorColor="#FFFFFF"
+                            app:endIconTint="#FFFFFF"
+                            app:hintTextColor="#FFFFFF"
+                            app:passwordToggleTint="#FFFFFF"
+                            app:startIconTint="#FFFFFF">
 
                             <com.google.android.material.textfield.TextInputEditText
                                 android:id="@+id/poblacioD"
 
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:background="@drawable/edittext_background"
                                 android:enabled="false"
+                                android:paddingTop="3dp"
+                                android:paddingBottom="3dp"
                                 android:text="@string/poblacio"
                                 android:textColor="#FFFFFF"
                                 android:textColorHint="#FFFFFF" />
                         </com.google.android.material.textfield.TextInputLayout>
+
                     </LinearLayout>
                 </LinearLayout>
 

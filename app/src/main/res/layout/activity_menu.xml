@@ -73,37 +73,36 @@
                         <com.google.android.material.textfield.TextInputLayout
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
                             android:layout_marginTop="10dp"
-                            android:hint="@string/prompt_email">
-
-                            <com.google.android.material.textfield.TextInputEditText
-                                android:id="@+id/correo"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:text="@string/correo"
-                                android:maxLines="1"
-                                android:ellipsize="end"
-                                android:enabled="false" /> <!-- Bloquear edición -->
-                        </com.google.android.material.textfield.TextInputLayout>
-
-                        <!-- Campo de nombre -->
-                        <com.google.android.material.textfield.TextInputLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:layout_marginTop="10dp"
+                            android:layout_weight="0.6"
                             android:hint="@string/prompt_username">
 
                             <com.google.android.material.textfield.TextInputEditText
                                 android:id="@+id/nom"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="@string/nom"
-                                android:maxLines="1"
                                 android:ellipsize="end"
-                                android:enabled="false" /> <!-- Bloquear edición -->
+                                android:enabled="false"
+                                android:maxLines="1"
+                                android:text="@string/nom" /> <!-- Bloquear edición -->
                         </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:layout_weight="0.4"
+                            android:hint="@string/poblacioEt"
+                            android:layout_width="1dp">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/poblacio"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:enabled="false"
+                                android:text="@string/poblacio" /> <!-- Bloquear edición -->
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <!-- Campo de nombre -->
                     </LinearLayout>
                 </LinearLayout>
 
@@ -113,37 +112,41 @@
                     android:orientation="horizontal">
 
                     <!-- Campo de edad -->
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:layout_marginTop="10dp"
-                        android:hint="@string/edatEt">
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/edat"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="@string/edat"
-                            android:textColorHint="@android:color/black"
-                            android:enabled="false" /> <!-- Bloquear edición -->
-                    </com.google.android.material.textfield.TextInputLayout>
 
                     <!-- Campo de población -->
                     <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
                         android:layout_marginTop="10dp"
-                        android:hint="@string/poblacioEt">
+                        android:layout_weight="0.6"
+                        android:hint="@string/prompt_email">
 
                         <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/poblacio"
+                            android:id="@+id/correo"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="@string/poblacio"
-                            android:enabled="false" /> <!-- Bloquear edición -->
+                            android:ellipsize="end"
+                            android:enabled="false"
+                            android:maxLines="1"
+                            android:text="@string/correo" /> <!-- Bloquear edición -->
                     </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_weight="0.4"
+                        android:hint="@string/edatEt"
+                        android:layout_width="1dp">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edat"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:enabled="false"
+                            android:text="@string/edat"
+                            android:textColorHint="@android:color/black" /> <!-- Bloquear edición -->
+                    </com.google.android.material.textfield.TextInputLayout>
+
                 </LinearLayout>
             </LinearLayout>
 

@@ -11,7 +11,7 @@ import com.bumptech.glide.Glide
 
 class MainActivity : AppCompatActivity() {
     private var mediaPlayer: MediaPlayer? = null
-    private val DURACION: Long = 3000
+    private val DURACION: Long = 4850
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

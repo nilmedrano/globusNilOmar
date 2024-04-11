@@ -22,12 +22,6 @@ class PlayerDetails : AppCompatActivity() {
         val EmailDetall: TextView = findViewById(R.id.emailD)
         val PoblacioDetall: TextView = findViewById(R.id.poblacioD)
 
-        val PuntuacioLabel: TextView = findViewById(R.id.puntuacioLabel)
-        val DataLabel: TextView = findViewById(R.id.dataLabel)
-        val EdatLabel: TextView = findViewById(R.id.edatLabel)
-        val EmailLabel: TextView = findViewById(R.id.emailLabel)
-        val PoblacioLabel: TextView = findViewById(R.id.poblacioLabel)
-
 
         val bundle: Bundle? = intent.extras
         val Nom = bundle?.getString("Nom")
@@ -51,8 +45,6 @@ class PlayerDetails : AppCompatActivity() {
         EdatDetall.text = Edat
         EmailDetall.text = Email
         PoblacioDetall.text = Poblacio
-
-
 
     }
 }
