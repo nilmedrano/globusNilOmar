@@ -39,9 +39,9 @@
                 android:id="@+id/imatgePerfil"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:onClick="changeImg"
                 android:scaleType="centerCrop"
-                android:src="@drawable/imatgemenu"
-                android:onClick="changeImg"/>
+                android:src="@drawable/imatgemenu" />
 
         </androidx.cardview.widget.CardView>
         <TextView
@@ -74,7 +74,7 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
-                            android:layout_weight="0.6"
+                            android:layout_weight="0.8"
                             android:hint="@string/prompt_username">
 
                             <com.google.android.material.textfield.TextInputEditText
@@ -88,18 +88,19 @@
                         </com.google.android.material.textfield.TextInputLayout>
 
                         <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="1dp"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
-                            android:layout_weight="0.4"
-                            android:hint="@string/poblacioEt"
-                            android:layout_width="1dp">
+                            android:layout_weight="0.2"
+                            android:hint="@string/edatEt">
 
                             <com.google.android.material.textfield.TextInputEditText
-                                android:id="@+id/poblacio"
+                                android:id="@+id/edat"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:enabled="false"
-                                android:text="@string/poblacio" /> <!-- Bloquear edición -->
+                                android:text="@string/edat"
+                                android:textColorHint="@android:color/black" /> <!-- Bloquear edición -->
                         </com.google.android.material.textfield.TextInputLayout>
 
                         <!-- Campo de nombre -->
@@ -131,23 +132,31 @@
                             android:text="@string/correo" /> <!-- Bloquear edición -->
                     </com.google.android.material.textfield.TextInputLayout>
 
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
                     <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="1dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:layout_weight="0.4"
-                        android:hint="@string/edatEt"
-                        android:layout_width="1dp">
+                        android:hint="@string/poblacioEt">
 
                         <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/edat"
+                            android:id="@+id/poblacio"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:enabled="false"
-                            android:text="@string/edat"
-                            android:textColorHint="@android:color/black" /> <!-- Bloquear edición -->
-                    </com.google.android.material.textfield.TextInputLayout>
+                            android:text="@string/poblacio" />
 
+                        <!-- Bloquear edición -->
+                    </com.google.android.material.textfield.TextInputLayout>
                 </LinearLayout>
+
             </LinearLayout>
 
 
@@ -169,24 +178,33 @@
             android:text="@string/CANVICONTRASENYA"
             android:textColor="@color/bluesoft" />
 
-        <Button
-            android:id="@+id/PuntuacionsBtn"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/button_login"
-            android:text="@string/PuntuacionsBtn"
+            android:orientation="horizontal">
 
-            android:textColor="@color/bluesoft" />
+            <Button
+                android:id="@+id/PuntuacionsBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/button_login"
+                android:text="@string/PuntuacionsBtn"
+                android:layout_weight="1"
+                android:layout_marginRight="4dp"
+                android:textColor="@color/bluesoft" />
 
-        <Button
-            android:id="@+id/CreditsBtn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/button_login"
-            android:text="@string/CreditsBtn"
-            android:textColor="@color/bluesoft" />
+            <Button
+                android:id="@+id/CreditsBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:layout_marginLeft="4dp"
+                android:background="@drawable/button_login"
+                android:text="@string/CreditsBtn"
+                android:textColor="@color/bluesoft" />
+        </LinearLayout>
 
         <Button
             android:id="@+id/tancarSessio"
@@ -197,5 +215,6 @@
             android:text="@string/TancarSessio"
             android:textColor="@color/blueberry"
             android:textStyle="bold" />
+
     </LinearLayout>
 </RelativeLayout>

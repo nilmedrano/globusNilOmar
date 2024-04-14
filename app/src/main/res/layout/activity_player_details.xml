@@ -50,8 +50,8 @@
 
                         <androidx.cardview.widget.CardView
                             android:id="@+id/imageFrame2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
                             android:layout_margin="8dp"
                             app:cardBackgroundColor="@android:color/white"
                             app:cardCornerRadius="90dp"
@@ -63,6 +63,8 @@
                                 android:id="@+id/imatgeD"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
+                                android:adjustViewBounds="false"
+                                android:cropToPadding="false"
                                 android:scaleType="centerCrop"
                                 tools:src="@drawable/fperfil" />
                         </androidx.cardview.widget.CardView>
@@ -166,15 +168,22 @@
 
                             </com.google.android.material.textfield.TextInputLayout>
 
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal">
+
                             <com.google.android.material.textfield.TextInputLayout
-                                android:id="@+id/edatLabel"
+                                android:id="@+id/poblacioLabel"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="10dp"
                                 android:layout_weight="0.75"
                                 android:background="#00FF0000"
                                 android:backgroundTint="#FFFFFF"
-                                android:hint="@string/edatEt"
+                                android:hint="@string/poblacioEt"
                                 android:textColorHint="#FFFFFF"
                                 app:boxBackgroundColor="#FFFFFF"
                                 app:boxStrokeColor="#FFFFFF"
@@ -185,19 +194,19 @@
                                 app:startIconTint="#FFFFFF">
 
                                 <com.google.android.material.textfield.TextInputEditText
-                                    android:id="@+id/edatD"
+                                    android:id="@+id/poblacioD"
+
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="10"
                                     android:background="@drawable/edittext_background"
                                     android:enabled="false"
                                     android:paddingTop="3dp"
                                     android:paddingBottom="3dp"
-                                    android:text="@string/edat"
+                                    android:text="@string/poblacio"
                                     android:textColor="#FFFFFF"
-                                    android:textColorHint="#FFFFFF" /> <!-- Bloquear edición -->
-                            </com.google.android.material.textfield.TextInputLayout>
+                                    android:textColorHint="#FFFFFF" />
 
+                            </com.google.android.material.textfield.TextInputLayout>
                         </LinearLayout>
                     </LinearLayout>
 
@@ -209,6 +218,7 @@
                         <!-- Campo de edad -->
 
                         <!-- Campo de población -->
+
                         <com.google.android.material.textfield.TextInputLayout
                             android:id="@+id/dataLabel"
                             android:layout_width="0dp"
@@ -244,14 +254,14 @@
                         </com.google.android.material.textfield.TextInputLayout>
 
                         <com.google.android.material.textfield.TextInputLayout
-                            android:id="@+id/poblacioLabel"
+                            android:id="@+id/edatLabel"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
                             android:layout_weight="0.75"
                             android:background="#00FF0000"
                             android:backgroundTint="#FFFFFF"
-                            android:hint="@string/poblacioEt"
+                            android:hint="@string/edatEt"
                             android:textColorHint="#FFFFFF"
                             app:boxBackgroundColor="#FFFFFF"
                             app:boxStrokeColor="#FFFFFF"
@@ -262,17 +272,17 @@
                             app:startIconTint="#FFFFFF">
 
                             <com.google.android.material.textfield.TextInputEditText
-                                android:id="@+id/poblacioD"
-
+                                android:id="@+id/edatD"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:layout_weight="10"
                                 android:background="@drawable/edittext_background"
                                 android:enabled="false"
                                 android:paddingTop="3dp"
                                 android:paddingBottom="3dp"
-                                android:text="@string/poblacio"
+                                android:text="@string/edat"
                                 android:textColor="#FFFFFF"
-                                android:textColorHint="#FFFFFF" />
+                                android:textColorHint="#FFFFFF" /> <!-- Bloquear edición -->
                         </com.google.android.material.textfield.TextInputLayout>
 
                     </LinearLayout>

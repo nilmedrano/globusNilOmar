@@ -203,14 +203,12 @@ class MenuActivity : AppCompatActivity() {
         finish()
     }
     private fun consulta(){
-        // Elimina la URL como argumento aquí
         database = FirebaseDatabase.getInstance()
         bdreference = database.getReference("DATA BASE JUGADORS")
         bdreference.addValueEventListener (object: ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 Log.i ("DEBUG","arrel value"+ snapshot.getValue().toString())
                 Log.i ("DEBUG","arrel key"+ snapshot.key.toString())
-                // ara capturem tots els fills
                 var trobat: Boolean = false
                 for (ds in snapshot.getChildren()) {
                     Log.i ("DEBUG","DS key:"+ds.child("Uid").key.toString())

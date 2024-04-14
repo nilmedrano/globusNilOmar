@@ -34,7 +34,7 @@ class PlayerDetails : AppCompatActivity() {
 
         NomDetall.text = Nom
         PuntuacioDetall.text = Puntuacio
-        // Asigna el ImagenView adecuadamente con la librería Picasso o Glide según corresponda
+        // Asigna ImageView con Picasso
         if (Imatge != null && Imatge.isNotEmpty()) {
             Picasso.get().load(Imatge).into(ImatgeDetall)
         } else {

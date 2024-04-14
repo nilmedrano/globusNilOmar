@@ -79,7 +79,6 @@ class ScoreActivity : AppCompatActivity() {
             }
 
             override fun onCancelled(error: DatabaseError) {
-                // Manejar error de cancelación
                 TODO("Not yet implemented")
             }
         })
